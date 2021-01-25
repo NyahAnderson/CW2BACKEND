@@ -61,8 +61,10 @@ app.use(function(req, res, next) {
         res.send("File not found!");
         });
     
+        const port = process.env.PORT || 3000
+        app.listen(port)
 
-app.listen(3000, function () {
-    console.log("Express server has started");
+//app.listen(3000, function () {
+    //console.log("Express server has started");
 
-});
+//});
