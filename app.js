@@ -36,6 +36,17 @@ if (e) return next(e)
 res.send(results.ops)})
 });
 
+app.put('/collection/:collectionName/:id', (req, res, next) => {
+req.collection.update({ _id: new ObjectID(req.params.id) },
+{ $set: req.body },
+{ safe: true, multi: false },
+(e, result) => {
+if (e) return next(e)
+res.send((result.result.n === 1) ?
+{msg: 'success'} : { msg: 'error'})
+})
+})
+
 
 app.use(function(req, res, next) {
     console.log("Request IP: " + req.url);
