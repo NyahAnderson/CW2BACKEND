@@ -13,7 +13,7 @@ app.use(express.json());
 
 let db;
 
-MongoClient.connect('ADD YOUR MONGO DB SERVER DATA HERE', (err, client) => {
+MongoClient.connect('mongodb+srv://naDB:THISISMYAPSSWORD1010$@cw2cluster.rhjxe.mongodb.net/', (err, client) => {
 db = client.db('Webstore')
 });
 
