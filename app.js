@@ -38,6 +38,15 @@ app.post('/collection/:collectionName', (req, res, next) => {
 });
 
 const ObjectID = require('mongodb').ObjectID;
+app.get('/collection/:collectionName/:id', (req, res, next) => {
+        req.collection.findOne({ _id: new ObjectID(req.params.id) }, (e, result) => {
+            if (e) return next(e)
+            res.send(result)
+        })
+    })
+
+
+const ObjectID = require('mongodb').ObjectID;
 app.put('/collection/:collectionName/:id', (req, res, next) => {
     req.collection.update({ _id: new ObjectID(req.params.id) },
         { $set: req.body },
