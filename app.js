@@ -64,7 +64,7 @@ app.use(function (req, res, next) {
     console.log("Request date: " + new Date());
     next();
 });
-
+/*
 app.use(function (req, res, next) {
     var filePath = path.join(__dirname, "static", req.url);
 
@@ -77,7 +77,9 @@ app.use(function (req, res, next) {
         else next();
     });
 });
-
+*/
+let publicPath = path.resolve(_dirname,'public');
+app.use(express.static(publicPath));
 
 app.use(function (req, res) {
     res.status(404);
