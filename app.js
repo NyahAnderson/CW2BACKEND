@@ -39,11 +39,11 @@ app.post('/collection/:collectionName', (req, res, next) => {
 
 const ObjectID = require('mongodb').ObjectID;
 app.get('/collection/:collectionName/:id', (req, res, next) => {
-        req.collection.findOne({ _id: new ObjectID(req.params.id) }, (e, result) => {
-            if (e) return next(e)
-            res.send(result)
-        })
+    req.collection.findOne({ _id: new ObjectID(req.params.id) }, (e, result) => {
+        if (e) return next(e)
+        res.send(result)
     })
+})
 
 
 //const ObjectID = require('mongodb').ObjectID;
@@ -64,7 +64,12 @@ app.use(function (req, res, next) {
     console.log("Request date: " + new Date());
     next();
 });
-/*
+
+app.get('/', (req, res, next) => {
+        res.send('Select a collection, e.g., /collection/LessonInfo')
+    });
+
+
 app.use(function (req, res, next) {
     var filePath = path.join(__dirname, "static", req.url);
 
@@ -77,9 +82,7 @@ app.use(function (req, res, next) {
         else next();
     });
 });
-*/
-let publicPath = path.resolve(_dirname,'public');
-app.use(express.static(publicPath));
+
 
 app.use(function (req, res) {
     res.status(404);
