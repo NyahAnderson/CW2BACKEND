@@ -10,13 +10,13 @@ const app = express();
 app.use(cors());
 
 app.use(express.json());
-
+/*
 app.use(function (req, res, next) {
     console.log("Request IP: " + req.url);
     console.log("Request date: " + new Date());
     next();
 });
-
+*/
 let db;
 
 MongoClient.connect('mongodb+srv://naDB:THISISMYAPSSWORD1010$@cw2cluster.rhjxe.mongodb.net/', (err, client) => {
