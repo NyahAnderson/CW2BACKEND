@@ -58,12 +58,17 @@ app.put('/collection/:collectionName/:id', (req, res, next) => {
         })
 })
 
-
+/*
 app.use(function (req, res, next) {
     console.log("Request IP: " + req.url);
     console.log("Request date: " + new Date());
     next();
 });
+*/
+app.use(function(request, response) { // middleware
+    console.log("In comes a request to: " + request.url);
+    //response.end("Hello, world!");
+    });
 
 app.get('/', (req, res, next) => {
         res.send('Select a collection, e.g., /collection/LessonInfo')
