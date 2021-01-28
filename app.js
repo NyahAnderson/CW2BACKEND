@@ -10,13 +10,12 @@ const app = express();
 app.use(cors());
 
 app.use(express.json());
-/*
+
 app.use(function (req, res, next) {
-    console.log("Request IP: " + req.url);
-    console.log("Request date: " + new Date());
+    console.log("Request URL: " + req.url);
     next();
 });
-*/
+
 let db;
 
 MongoClient.connect('mongodb+srv://naDB:THISISMYAPSSWORD1010$@cw2cluster.rhjxe.mongodb.net/', (err, client) => {
@@ -65,11 +64,8 @@ app.put('/collection/:collectionName/:id', (req, res, next) => {
 })
 
 
-
-
-
 app.get('/', (req, res, next) => {
-        res.send('Select a collection, e.g., /collection/LessonInfo')
+        res.send('Select a collection or image, e.g., /collection/LessonInfo , /art.png', )
     });
 
 
