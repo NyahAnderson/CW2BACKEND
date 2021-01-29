@@ -27,15 +27,6 @@ app.param('collectionName', (req, res, next, collectionName) => {
     return next()
 });
 
-app.param('OrderInfo', (req, res, next, collectionName) => {
-    req.collection = db.collection(collectionName)
-    return next()
-});
-
-app.param('LessonInfo', (req, res, next, collectionName) => {
-    req.collection = db.collection(collectionName)
-    return next()
-});
 
 //GET lessons
 app.get('/collection/:collectionName', (req, res, next) => {
@@ -47,7 +38,7 @@ app.get('/collection/:collectionName', (req, res, next) => {
 });
 
 //POST new order
-app.post('/collection/:OrderInfo', (req, res, next) => {
+app.post('/collection/:collectionName', (req, res, next) => {
     req.collection.insert(req.body, (e, results) => {
         if (e) return next(e)
         res.send(results.ops)
@@ -65,7 +56,7 @@ app.get('/collection/:collectionName/:id', (req, res, next) => {
 */
 
 //UPDATE spaces in Lesson
-app.put('/collection/:LessonInfo/:id', (req, res, next) => {
+app.put('/collection/:collectionName/:id', (req, res, next) => {
     req.collection.update({ _id: new ObjectID(req.params.id) },
         { $set: req.body },
         { safe: true, multi: false },
