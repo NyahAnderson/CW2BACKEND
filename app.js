@@ -45,7 +45,7 @@ app.post('/collection/:collectionName', (req, res, next) => {
     })
 });
 
-/*
+
 const ObjectID = require('mongodb').ObjectID;
 app.get('/collection/:collectionName/:id', (req, res, next) => {
     req.collection.findOne({ _id: new ObjectID(req.params.id) }, (e, result) => {
@@ -53,7 +53,7 @@ app.get('/collection/:collectionName/:id', (req, res, next) => {
         res.send(result)
     })
 })
-*/
+
 
 //UPDATE spaces in Lesson
 app.put('/collection/:collectionName/:id', (req, res, next) => {
