@@ -47,7 +47,7 @@ app.get('/collection/:collectionName', (req, res, next) => {
 });
 
 //POST new order
-app.post('/collection/OrderInfo', (req, res, next) => {
+app.post('/collection/:OrderInfo', (req, res, next) => {
     req.collection.insert(req.body, (e, results) => {
         if (e) return next(e)
         res.send(results.ops)
@@ -65,7 +65,7 @@ app.get('/collection/:collectionName/:id', (req, res, next) => {
 */
 
 //UPDATE spaces in Lesson
-app.put('/collection/LessonInfo/:id', (req, res, next) => {
+app.put('/collection/:LessonInfo/:id', (req, res, next) => {
     req.collection.update({ _id: new ObjectID(req.params.id) },
         { $set: req.body },
         { safe: true, multi: false },
