@@ -38,7 +38,7 @@ app.get('/collection/:collectionName', (req, res, next) => {
 });
 
 //POST new order
-app.post('/collection/:collectionName', (req, res, next) => {
+app.post('/collection/OrderInfo', (req, res, next) => {
     req.collection.insert(req.body, (e, results) => {
         if (e) return next(e)
         res.send(results.ops)
